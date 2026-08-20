@@ -1,0 +1,53 @@
+name: "Estrutura de diretórios e Arquivos"
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main, dev]
+    workflow_dispatch:
+    
+
+env:
+    NODE_VERSION: '18'
+
+jobs:
+    demonstrando-estrutura:
+        name: "Demonstrar estrutura básica"
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout do código
+              uses: actions/checkout@v4
+             
+            - name: Mostrar estrutura .github/workflows
+              run: |
+                echo "== ESTRUTURA DE DIRETÓRIOS E ARQUIVOS .github/workflows =="
+                ls -la .github/workflows
+                echo ""
+                echo " Total de workflows / $(ls -1 .github/workflows | wc -l)"
+
+            - name: Elementos obrigatórios do workflow
+              run: |
+                echo " == ELEMENTOS OBRIGATÓRIOS == "
+                echo " 1. name = Nome do workflow "
+                echo " 2. on = Evento que dispara o workflow (Trigger) "
+                echo " 3. jobs = Definição dos trabalhos a serem executados "
+                echo " 4. runs-on = Ambiente onde os jobs serão executados "
+                echo " 5. steps = Passos individuais dentro de um job "
+                echo ""
+                echo " Total de elementos obrigatórios = 5 "
+            
+            - name: Variáveis e Contexto
+              run: |
+                echo " == VARIÁVEIS E CONTEXTO == "
+                echo " Variáveis env = ${{ env.NODE_VERSION }}"
+                echo " 1. env = Definição de variáveis do ambiente "
+                echo " 2. contextos = Acesso a informações do workflow, job, runner, etc. "
+                echo ""
+                echo " Total de variáveis e contextos = 2 "
+            
+            - name: Condicional
+              if: github.event_name == 'pull_request'
+              run: |
+                echo "Rodando um PR"
