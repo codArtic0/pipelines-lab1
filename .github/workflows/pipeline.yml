@@ -47,3 +47,7 @@ jobs:
                 echo ""
                 echo " Total de variáveis e contextos = 2 "
             
+            - name: Condicional
+              if: github.event_name == 'pull_request'
+              run: |
+                echo "Rodando um PR"
