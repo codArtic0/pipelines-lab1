@@ -21,8 +21,8 @@ jobs:
             - name: Mostrar infos do sistema
               run: |
                 echo "Sistema Operacional: ${{runner.os}}"
-                echo "Diretório atual: ${pwd}"
-                echo "Usuário atual: ${whoami}"
+                echo "Diretório atual: $(pwd)"
+                echo "Usuário atual: $(whoami)"
             
             - name: Listar arquivos do repositório
               run: ls -la
@@ -31,6 +31,6 @@ jobs:
               run: | 
                 echo "Esta máquina se chama: ${{runner.name}} e a arquitetura é ${{runner.arch}}"
                 echo " "
-                echo "Data atual: ${date}"
+                echo "Data atual: $(date)"
 
 
