@@ -1,0 +1,33 @@
+#Pipeline de Exemplo (C roda se A,B for OK e D roda se C for OK)
+
+name: Jobs Paralelos x Sequenciais
+
+on: [ push ]
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Lint
+              run: echo "Lint OK"
+    testes:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Testes
+              run: echo "Testes OK"
+    build:
+        needs: [lint, testes]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Build
+              run: echo "Build OK"
+    publish:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Publish
+              run: echo "Publish OK"
+
