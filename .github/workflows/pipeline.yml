@@ -18,14 +18,14 @@ jobs:
               uses: actions/checkout@v4
              
             - name: Mostrar estrutura .github/workflows
-              run: 
+              run: |
                 echo "== ESTRUTURA DE DIRETÓRIOS E ARQUIVOS .github/workflows =="
                 ls -la .github/workflows
                 echo ""
                 echo " Total de workflows / $(ls -1 .github/workflows | wc -l)"
 
             - name: Elementos obrigatórios do workflow
-              run:
+              run: |
                 echo " == ELEMENTOS OBRIGATÓRIOS == "
                 echo " 1. name = Nome do workflow "
                 echo " 2. on = Evento que dispara o workflow (Trigger) "
@@ -36,7 +36,7 @@ jobs:
                 echo " Total de elementos obrigatórios = 5 "
             
             - name: Variáveis e Contexto
-              run: 
+              run: |
                 echo " == VARIÁVEIS E CONTEXTO == "
                 echo " Variáveis env = ${{ env.NODE_VERSION }}"
                 echo " 1. env = Definição de variáveis do ambiente "
