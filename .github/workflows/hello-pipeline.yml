@@ -1,0 +1,36 @@
+name: Pipeline com elementos obrigatórios
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+    workflow_dispatch:
+
+jobs:
+    hello-job:
+        runs-on: ubuntu-latest
+        
+        steps:
+            - name: Checkout do Código
+              uses: actions/checkout@v4
+
+            - name: Executar Hello Git
+              run: echo "Hello GitHub Actions"
+
+            - name: Mostrar infos do sistema
+              run: |
+                echo "Sistema Operacional: ${{runner.os}}"
+                echo "Diretório atual: ${pwd}"
+                echo "Usuário atual: ${whoami}"
+            
+            - name: Listar arquivos do repositório
+              run: ls -la
+
+            - name: Comandos múltiplos
+              run: | 
+                echo "Esta máquina se chama: ${{runner.name}} e a arquitetura é ${{runner.arch}}"
+                echo " "
+                echo "Data atual: ${date}"
+
+
