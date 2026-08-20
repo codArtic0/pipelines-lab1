@@ -3,7 +3,10 @@ name: "Estrutura de diretórios e Arquivos"
 on:
     push:
         branches: [main]
+    pull_request:
+        branches: [main, dev]
     workflow_dispatch:
+    
 
 env:
     NODE_VERSION: '18'
